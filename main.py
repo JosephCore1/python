@@ -9,7 +9,7 @@ class TopicDetails(BaseModel):
     details: List[str] = Field(..., description="A list of details about the topic")
 
 def get_topic_input():
-    return input("Enter a subject to explore (or 'exit' to quit): ")
+    return input("Enter a subject to explore (or 'quit' to stop): ")
 
 def fetch_info(subject):
     api_client = Groq(
@@ -35,6 +35,6 @@ def fetch_info(subject):
 if __name__ == "__main__":
     while True:
         user_input = get_topic_input()
-        if user_input.lower() == 'exit':
+        if user_input.lower() == 'quit':
             break
         fetch_info(user_input)
